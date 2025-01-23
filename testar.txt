@@ -1,0 +1,7 @@
+ARG=$(shuf -i 0-99 -n 100 | tr '\n' ' ');./push_swap $ARG | ./checker_linux $ARG
+
+ARG=$(shuf -i 0-99 -n 100 | tr '\n' ' '); ./push_swap $ARG | wc -l
+
+ARG=$(shuf -i 0-1000 -n 500 | tr '\n' ' ');./push_swap $ARG | ./checker_linux $ARG
+
+ARG=$(shuf -i 0-1000 -n 500 | tr '\n' ' '); ./push_swap $ARG | wc -l
