@@ -7,7 +7,7 @@
 
 ### 📋 Requirements
 - Unix/Linux operating system.
-- GCC (C compiler) installed.
+- CC (C compiler).
 - Basic understanding of stack data structures.
 
 ### 📖 Instructions
