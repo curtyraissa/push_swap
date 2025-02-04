@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:51:26 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/01/10 16:36:32 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:45:18 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	validate_arguments(int argc, char **argv)
 			while (argv[i][j])
 			{
 				if ((!(ft_isdigit(argv[i][j])) && argv[i][j] != ' '
-				&& argv[i][j] != '-' && argv[i][j] != '+')
-				|| ((argv[i][j] == '-' || argv[i][j] == '+')
-				&& (argv[i][j + 1] == '\0' || argv[i][j + 1] == ' ')))
+					&& argv[i][j] != '-' && argv[i][j] != '+')
+					|| ((argv[i][j] == '-' || argv[i][j] == '+')
+					&& (argv[i][j + 1] == '\0' || argv[i][j + 1] == ' ')))
 					free_and_exit(NULL, "Error\n");
 				j++;
 			}

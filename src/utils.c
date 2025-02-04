@@ -6,7 +6,7 @@
 /*   By: rcurty-g <rcurty-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 15:31:48 by rcurty-g          #+#    #+#             */
-/*   Updated: 2025/01/10 14:55:22 by rcurty-g         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:46:41 by rcurty-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	parse_numbers(t_stacks *stacks)
 	i = 0;
 	while (tmp[i] != NULL && tmp[i][0] != '\0')
 	{
-		stacks->a[z++] = ft_atol(tmp[i++], stacks);
+		stacks->a[z++] = ft_atoi_ps(tmp[i++], stacks);
 		free(tmp[i - 1]);
 	}
 	free(tmp);
@@ -101,30 +101,31 @@ void	create_index(t_stacks *stacks)
 	free(new_a);
 }
 
-int	ft_atol(const char *n, t_stacks *stacks)
+int	ft_atoi_ps(const char *str, t_stacks *stacks)
 {
-	int			i;
-	long		sign;
-	long long	res;
+	int	i;
+	int	sig;
+	int	res;
 
-	res = 0;
-	sign = 1;
 	i = 0;
-	while (n[i] == ' ' || (n[i] >= '\t' && n[i] <= '\r'))
+	sig = 1;
+	res = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
-	if ((n[i] == '+' || n[i] == '-'))
+	if ((str[i] == '+' || str[i] == '-'))
 	{
-		if (n[i] == '-')
-			sign = -1;
+		if (str[i] == '-')
+			sig = -1;
 		i++;
 	}
-	while (n[i])
+	while (str[i])
 	{
-		if (res > 2147483647 || (res * sign) < -2147483648 || ft_strlen(n) > 11)
+		if (res > INT_MAX / 10
+			|| (res == INT_MAX / 10 && (str[i] - '0') > INT_MAX % 10))
 			free_and_exit(stacks, "Error\n");
-		if (!(n[i] >= '0' && n[i] <= '9'))
+		if (!(str[i] >= '0' && str[i] <= '9'))
 			free_and_exit(stacks, "Error\n");
-		res = res * 10 + (n[i++] - '0');
+		res = res * 10 + (str[i++] - '0');
 	}
-	return ((int)(res * sign));
+	return (res * sig);
 }
